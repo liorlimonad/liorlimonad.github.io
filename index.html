@@ -11,20 +11,8 @@
 
         // Function to redirect randomly
         function randomRedirect() {
-            var lastRedirect = localStorage.getItem("lastRedirect");
             var chosenUrl;
-
-            // Randomly choose a URL, different from the last one if possible
-            if (lastRedirect === url1) {
-                chosenUrl = url2;
-            } else if (lastRedirect === url2) {
-                chosenUrl = url1;
-            } else {
-                chosenUrl = Math.random() < 0.5 ? url1 : url2;
-            }
-
-            // Store the chosen URL
-            localStorage.setItem("lastRedirect", chosenUrl);
+            chosenUrl = Math.random() < 0.5 ? url1 : url2;
 
             // Redirect to the chosen URL
             window.location.href = chosenUrl;
