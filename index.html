@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Redirect</title>
-    <script src="script.js"></script>
+    <title>Random Redirect</title>
 </head>
 <body>
-    <h1>URL Redirection Page</h1>
-    <button id="redirectButton">Go to URL</button>
+    <script>
+        // URLs for redirection
+        var url1 = "https://example.com/link1";
+        var url2 = "https://example.com/link2";
+
+        // Function to redirect randomly
+        function randomRedirect() {
+            var lastRedirect = localStorage.getItem("lastRedirect");
+            var chosenUrl;
+
+            // Randomly choose a URL, different from the last one if possible
+            if (lastRedirect === url1) {
+                chosenUrl = url2;
+            } else if (lastRedirect === url2) {
+                chosenUrl = url1;
+            } else {
+                chosenUrl = Math.random() < 0.5 ? url1 : url2;
+            }
+
+            // Store the chosen URL
+            localStorage.setItem("lastRedirect", chosenUrl);
+
+            // Redirect to the chosen URL
+            window.location.href = chosenUrl;
+        }
+
+        // Call the function on page load
+        randomRedirect();
+    </script>
 </body>
 </html>
