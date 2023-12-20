@@ -1,1 +1,3 @@
+<script>
 return("hello")
+  </script>
